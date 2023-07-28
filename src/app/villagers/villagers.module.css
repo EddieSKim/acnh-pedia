@@ -1,0 +1,14 @@
+.container {
+    font-family: "FinkHeavy", sans-serif;
+}
+
+.wrapper {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-family: "FinkHeavy", sans-serif;
+}

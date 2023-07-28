@@ -1,0 +1,37 @@
+.card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContainer {
+    width: 350px;
+    height: 500px;
+    display: absolute;
+    border: 2px solid #008300;
+    background-color: #c8e8c8;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.contentWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileImg {
+    position: relative;
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
