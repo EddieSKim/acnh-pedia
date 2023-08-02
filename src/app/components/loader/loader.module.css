@@ -1,0 +1,63 @@
+.loaderWrapper {
+    height: 100%;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.loadingRing {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 10px solid #000000;
+}
+
+.iconLoader1 {
+    width: 30px;
+    height: auto;
+    animation: 1s bounce linear infinite;
+}
+
+.iconLoader2 {
+    width: 30px;
+    height: auto;
+    animation: 1s bounce linear infinite;
+    animation-delay: 250ms;
+}
+
+.iconLoader3 {
+    width: 30px;
+    height: auto;
+    animation: 1s bounce linear infinite;
+    animation-delay: 500ms;
+}
+
+.iconLoader4 {
+    width: 30px;
+    height: auto;
+    animation: 1s bounce linear infinite;
+    animation-delay: 750ms;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
