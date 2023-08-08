@@ -1,36 +1,38 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import VillagerBlock from "@components/villagerBlock";
+import VillagerBlock from "@components/villagerBlock/villagerBlock";
 import styles from "./villagers.module.css";
 import Loader from "@components/loader/loader";
+import { villagerInterface } from "../villagerType";
 
 // https://wallpapers-clan.com/app-icons/animal-crossing/
+// https://nookipedia.com/wiki/Category:New_Horizons_inventory_icons
 
-interface villagerInterface {
-    birthday: string,
-    "birthday-string": string,
-    "bubble-color": string,
-    "catch-phrase": string,
-    "catch-translations": {
-        "catch-KRko": string,
-        "catch-USen": string,
-    },
-    "file-name": string,
-    gender: string,
-    hobby: string,
-    icon_uri: string,
-    id: number,
-    image_uri: string,
-    name: {
-        "name-KRko": string,
-        "name-USen": string,
-    },
-    personality: string,
-    saying: string,
-    species: string,
-    subtype: string,
-    "text-color": string,
-}
+// interface villagerInterface {
+//     birthday: string,
+//     "birthday-string": string,
+//     "bubble-color": string,
+//     "catch-phrase": string,
+//     "catch-translations": {
+//         "catch-KRko": string,
+//         "catch-USen": string,
+//     },
+//     "file-name": string,
+//     gender: string,
+//     hobby: string,
+//     icon_uri: string,
+//     id: number,
+//     image_uri: string,
+//     name: {
+//         "name-KRko": string,
+//         "name-USen": string,
+//     },
+//     personality: string,
+//     saying: string,
+//     species: string,
+//     subtype: string,
+//     "text-color": string,
+// }
 
 interface villagersBySpecies {
     identifier: string,
@@ -184,23 +186,31 @@ function Villagers() {
     const defaultLang = "USen";
     const [isLoading, setIsLoading] = useState(false);
     const [list, setList] = useState<Array<villagersBySpecies>>();
+    const apiKey : string = process.env.NEXT_PUBLIC_KEY!;
+    const version : string = process.env.NEXT_VERSION!;
 
     useEffect(() => {
         setIsLoading(true);
-        fetch("http://acnhapi.com/v1/villagers", { method: "GET" })
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                // setVillagers(Object.values(data) as villagerInterface[]);
-                return Object.values(data) as villagerInterface[];
-            })
-            .then(list => {
-                villagersList.map((item) => {
-                    item.list = list.filter((villager) => villager?.species === item.identifier)
-                });
-                setList(villagersList);
-            })
+        fetch("https://api.nookipedia.com/villagers?game=NH&nhdetails=true",  {
+            method: "GET",
+            headers: {
+                "X-API-KEY": apiKey,
+                "Version": version,
+            }
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            return Object.values(data) as villagerInterface[];
+        })
+        .then(list => {
+            villagersList.map((entry) => {
+                entry.list = list.filter((villager) => 
+                villager?.species === entry.identifier)
+            });
+            setList(villagersList);
+        })
         setIsLoading(false);
     }, [])
 
@@ -217,7 +227,7 @@ function Villagers() {
                                     </span>
                                     {
                                         item.list && !isLoading ? (
-                                            <VillagerBlock villagers={item.list} />
+                                            <VillagerBlock key={item.identifier} villagers={item.list} />
                                         ) : (
                                             <Loader />
                                         )

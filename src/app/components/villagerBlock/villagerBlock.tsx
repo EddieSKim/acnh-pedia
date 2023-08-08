@@ -1,34 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./villagerBlock.module.css";
-import VillagerProfileCard from "./villagerProfileCard";
+import VillagerProfileCard from "../villagerProfileCard/villagerProfileCard";
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
-
-interface villagerInterface {
-    birthday: string;
-    "birthday-string": string;
-    "bubble-color": string;
-    "catch-phrase": string;
-    "catch-translations": {
-        "catch-KRko": string;
-        "catch-USen": string;
-    };
-    "file-name": string;
-    gender: string;
-    hobby: string;
-    icon_uri: string;
-    id: number;
-    image_uri: string;
-    name: {
-        "name-KRko": string;
-        "name-USen": string;
-    };
-    personality: string;
-    saying: string;
-    species: string;
-    subtype: string;
-    "text-color": string;
-}
+import { villagerInterface } from "../../villagerType";
 
 type blockProps = {
     villagers: villagerInterface[];
@@ -117,10 +92,10 @@ function VillagerBlock({ villagers }: blockProps) {
                             className={styles.profile}
                             onClick={openVillagerCard}>
                             <img
-                                src={villager.image_uri}
+                                src={villager.image_url}
                                 style={{ width: "100px", height: "auto" }}
                                 id={villager.id.toString()} />
-                            <span id={villager.id.toString()}>{villager.name["name-USen"]}</span>
+                            <span id={villager.id.toString()}>{villager.name}</span>
                         </div>
                     ))}
                 </div>

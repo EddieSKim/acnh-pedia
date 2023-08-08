@@ -35,3 +35,27 @@
     height: auto;
     margin-top: 20px;
 }
+
+.villagerName {
+    font-size: 30px;
+}
+
+.villagerInfoWrapper {
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    background-color: #fff;
+    width: 100px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #000000;
+}
+
+.information {
+    width: 200px;
+    background-color: #fff;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #000000;
+}
