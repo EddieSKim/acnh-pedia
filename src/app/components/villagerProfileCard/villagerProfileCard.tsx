@@ -16,7 +16,7 @@ function VillagerProfileCard({ villager, closeCard }: profileProps) {
                     <button className={styles.exitBtn} onClick={closeCard}>CLOSE</button>
                     <div className={styles.contentWrapper}>
                         <span className={styles.villagerName}>{villager.name}</span>
-                        <img className={styles.profileImg} src={villager.nh_details.image_url} alt="profile photo" />
+                        <img className={styles.profileImg} src={villager.nh_details.photo_url} alt="profile photo" />
                         <div className={styles.villagerInfoWrapper}>
                             <div className={styles.label}>Birthday</div>
                             <div className={styles.information}>{villager.birthday_day}</div>

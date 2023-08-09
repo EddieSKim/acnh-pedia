@@ -93,7 +93,7 @@ function VillagerBlock({ villagers }: blockProps) {
                             onClick={openVillagerCard}>
                             <img
                                 src={villager.image_url}
-                                style={{ width: "100px", height: "auto" }}
+                                style={{ width: "auto", height: "120px" }}
                                 id={villager.id.toString()} />
                             <span id={villager.id.toString()}>{villager.name}</span>
                         </div>

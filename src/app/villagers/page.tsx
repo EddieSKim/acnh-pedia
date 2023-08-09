@@ -8,32 +8,6 @@ import { villagerInterface } from "../villagerType";
 // https://wallpapers-clan.com/app-icons/animal-crossing/
 // https://nookipedia.com/wiki/Category:New_Horizons_inventory_icons
 
-// interface villagerInterface {
-//     birthday: string,
-//     "birthday-string": string,
-//     "bubble-color": string,
-//     "catch-phrase": string,
-//     "catch-translations": {
-//         "catch-KRko": string,
-//         "catch-USen": string,
-//     },
-//     "file-name": string,
-//     gender: string,
-//     hobby: string,
-//     icon_uri: string,
-//     id: number,
-//     image_uri: string,
-//     name: {
-//         "name-KRko": string,
-//         "name-USen": string,
-//     },
-//     personality: string,
-//     saying: string,
-//     species: string,
-//     subtype: string,
-//     "text-color": string,
-// }
-
 interface villagersBySpecies {
     identifier: string,
     list: villagerInterface[],
@@ -73,7 +47,7 @@ const villagersList: villagersBySpecies[] = [
         list: [],
     },
     {
-        identifier: "Cub",
+        identifier: "Bear cub",
         list: [],
     },
     {
@@ -183,7 +157,6 @@ const villagersList: villagersBySpecies[] = [
 ];
 
 function Villagers() {
-    const defaultLang = "USen";
     const [isLoading, setIsLoading] = useState(false);
     const [list, setList] = useState<Array<villagersBySpecies>>();
     const apiKey : string = process.env.NEXT_PUBLIC_KEY!;
@@ -198,14 +171,22 @@ function Villagers() {
                 "Version": version,
             }
         })
-        .then(res => {
+        .then((res) => {
             return res.json();
         })
-        .then(data => {
+        .then((data) => {
             return Object.values(data) as villagerInterface[];
         })
-        .then(list => {
+        .then((list) => {
+            console.log(list)
             villagersList.map((entry) => {
+                if(entry.identifier === "Cub") {
+                    list.map((villager) => {
+                        if(villager?.species == "Cub") {
+                            console.log("HELLO")
+                        }
+                    } )
+                }
                 entry.list = list.filter((villager) => 
                 villager?.species === entry.identifier)
             });
