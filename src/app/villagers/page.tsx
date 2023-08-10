@@ -135,7 +135,7 @@ const villagersList: villagersBySpecies[] = [
         list: [],
     },
     {
-        identifier: "Rhino",
+        identifier: "Rhinoceros",
         list: [],
     },
     {
@@ -204,7 +204,7 @@ function Villagers() {
                             return (
                                 <div className={styles.blockWrapper}>
                                     <span className={styles.title}>
-                                    {item.identifier}
+                                        {item.identifier}
                                     </span>
                                     {
                                         item.list && !isLoading ? (
