@@ -91,10 +91,18 @@ function VillagerBlock({ villagers }: blockProps) {
                             id={villager.id.toString()}
                             className={styles.profile}
                             onClick={openVillagerCard}>
-                            <img
+                            <Image
                                 src={villager.image_url}
+                                alt="villager"
+                                width={0}
+                                height={0}
+                                quality={100}
+                                // loading="lazy"
+                                placeholder="blur"
+                                blurDataURL="/Present_NH_Inv_Icon_Cropped.png"
                                 style={{ width: "auto", height: "120px" }}
-                                id={villager.id.toString()} />
+                                id={villager.id.toString()}
+                            />
                             <span id={villager.id.toString()}>{villager.name}</span>
                         </div>
                     ))}
